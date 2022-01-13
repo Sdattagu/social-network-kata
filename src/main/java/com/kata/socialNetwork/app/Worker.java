@@ -33,16 +33,17 @@ public class Worker {
     }
 
     private String publishCmd(String personName, String messageContent, State appState){
-        Set<Person> people= appState.getNetwork().keySet();
-        for(Person person: people){
-            if(person.getName().equals(personName)) {
-                person.getWall().getTimeline().enqueue(messageContent, LocalDateTime.now());
+        Set<String> accountHolders= appState.getNetwork().keySet();
+        for(String accountHolder: accountHolders){
+            if(accountHolder.equals(personName)) {
+                Person holder= appState.getPeople().get(accountHolder);
+                holder.getWall().getTimeline().enqueue(messageContent, LocalDateTime.now());
                 return "Published '"+messageContent+"' to "+personName+"'s timeline.";
             }
         }
         // person doesn't have account- create one, then enqueue msg.
         Person newcomer= new Person(personName);
-        appState.addPersonToNetwork(newcomer);
+        appState.addPersonToNetwork(personName);
         newcomer.getWall().getTimeline().enqueue(messageContent, LocalDateTime.now());
         return "Couldn't find "+personName+" in the network. An account was created, and msg has been published.";
     }

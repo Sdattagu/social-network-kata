@@ -9,26 +9,29 @@ import java.util.List;
 import java.util.Map;
 
 public class State {
-    private Map<Person, List<Person>> network;
+    private Map<String, List<Person>> network;
+    private Map<String,Person> people;
 
     public State() {
-        this.network= new HashMap<Person,List<Person>>();
+        this.network= new HashMap<String,List<Person>>();
+        this.people= new HashMap<>();
     }
 
-    public Map<Person, List<Person>> getNetwork() {
+    public Map<String, List<Person>> getNetwork() {
         return network;
     }
+    public Map<String, Person> getPeople() { return people; }
 
-    public void addPersonToNetwork(Person person) {
-        if(!this.network.containsKey(person)){
-            this.network.put(person, new ArrayList<Person>());
+    public void addPersonToNetwork(String name) {
+        if(!this.network.containsKey(name)){
+            this.network.put(name, new ArrayList<Person>());
+            this.people.put(name, new Person(name));
         }
     }
 
-    // Returns a list of people who a given person is following.
     // The set of outbound edges from person node.
-    public List<Person> getWhoAmIFollowing(Person person){
-        if(this.network.containsKey(person)) return this.network.get(person);
-        else return null;
+    public List<Person> getWhoAmIFollowing(String name){
+        if(this.network.containsKey(name)) return this.network.get(name);
+        else return new ArrayList<>();
     }
 }

@@ -28,12 +28,12 @@ public class App
                 System.out.print("Input an action, or input 'Exit' to end the app> ");
                 input= reader.readLine();
 
-                worker.interpretAndUpdate(input,getState());
+                if(input.equalsIgnoreCase("Exit")) break;
+                else worker.interpretAndUpdate(input,getState());
             }
         } catch (Exception e){
             throw new RuntimeException(e);
         }
-
     }
 
     public static State getState() {

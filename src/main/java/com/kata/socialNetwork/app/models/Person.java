@@ -15,17 +15,8 @@ public class Person {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Wall getWall() {
         return wall;
-    }
-
-    public void setWall(Wall wall) {
-        this.wall = wall;
     }
 
     @Override
