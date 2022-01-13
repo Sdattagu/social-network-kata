@@ -1,6 +1,13 @@
 package com.kata.socialNetwork.app.models;
 
 public class Wall {
-    Person owner;
     Timeline timeline;
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
 }
