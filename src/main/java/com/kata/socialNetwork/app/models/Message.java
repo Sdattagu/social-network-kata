@@ -26,4 +26,12 @@ public class Message {
     public void setPublishedDateTime(LocalDateTime publishedDateTime) {
         this.publishedDateTime = publishedDateTime;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "content='" + content + '\'' +
+                ", publishedDateTime=" + publishedDateTime +
+                '}';
+    }
 }

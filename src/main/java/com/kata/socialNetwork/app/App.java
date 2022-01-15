@@ -25,11 +25,12 @@ public class App
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input= "";
             while(!input.equalsIgnoreCase("Exit")){
-                System.out.print("Input an action, or input 'Exit' to end the app> ");
+                System.out.print("Input an action, or input 'Exit' to end the app. > ");
                 input= reader.readLine();
 
                 if(input.equalsIgnoreCase("Exit")) break;
-                else worker.interpretAndUpdate(input,getState());
+                String outcome= worker.interpretAndUpdate(input,getState());
+                System.out.println(outcome);
             }
         } catch (Exception e){
             throw new RuntimeException(e);
