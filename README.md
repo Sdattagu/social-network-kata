@@ -23,7 +23,7 @@ This should yield a prompt of the following form:
 You're ready to start interacting with the app. You can try the following commands:
 
 - [User A] publishes "[Phrase A]". If the user doesn't exist in the network yet, you'll see a message stating that the user was created, and that message is published.
-- [User A] views [User B]. This will output a list, ordered by post time, of User B's timeline, regardless of whether User A is following User B or not.
+- [User A] views [User B]. This will output a list, ordered by post time, of User B's timeline, regardless of whether User A is following User B or not. Note that User A can view their own timeline using this command!
 - [User A] follows [User B]. By following a user, and THEN viewing your own posts, you'll see a 'merged' view of your own timeline.
 
 ## Generic Description of Code
