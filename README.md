@@ -32,7 +32,7 @@ The project does not use any in-memory database, so all state is maintained with
 
 There is a Worker class which uses 'command' methods to update the state. Commands are Strings which are parsed with regular expressions.
 
-The underlying data structure of the State is a hash-map. It represents a directed unweighted graph represented as an adjacency list.
+The underlying data structure of the State is a hash-map. The state contains information about who is following/being followed, i.e., the network. The network is represented as a directed unweighted graph in the form of an adjacency list.
 
 The most interesting part of the application is how it handles the result of a "follow" command. Once "follow" is executed, the adjacency list of the follower is updated.
 
@@ -40,4 +40,12 @@ When "view" command is executed after a "follow", the network graph is traversed
 
 The result is a single message list which contains the user's posts, and the posts of those he/she has followed- in time-order, with elapsed time stated in minutes/seconds/hours.
 
-It's important to note that the user's set of messages are not updated within the state; merging does not modify the user's own timeline internally, it just aggregates the posts of all followees using a merge algorithm, in time linear to the total number of messages of user+followees.
+### Important Note about "follow" operation - a design decision
+
+When the "follow" command is executed, the network graph maintained in the State is traversed, and a compiled list of messages are produced- the messages of the followees are merged, in time-order, to the those of the follower.
+
+However, it's important to note that the content of the set of follower's messages in the State itself, is not changed in any way by "follow".
+
+In other words, when "view" is executed after "follow", space is allocated for a new array which contains enough space for the 'merged timeline', leaving the message-sets of all users unmutated.
+
+I made this design decision because I believe it would be easier to implement an "unfollow" operation if the original message-sets of users are unchanged.
