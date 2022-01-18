@@ -1,5 +1,5 @@
 # Social Network Kata
-This is a web application which allows multiple users to: 
+This is a Java application which simulates some capabilities of the backend of an online social network. It allows multiple users to: 
 - Publish messages to a timeline
 - View their own and other users' messages, and 
 - Follow other users, which integrates the followed users' messages into the users' own view of their timeline.
