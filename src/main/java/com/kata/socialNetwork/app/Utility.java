@@ -66,7 +66,7 @@ public final class Utility {
         }
     }
 
-    private static List<Message> mergedView(String follower, List<Person> followees, State state){
+    public static List<Message> mergedView(String follower, List<Person> followees, State state){
         // Initial set of messages consist only of the viewer's feed.
         List<Message> followerMessages= state.getPeople().get(follower).getWall().getTimeline().getMessages();
         // Traverse the network's edges outbound from the follower's node, and merge each followee's timeline, into the follower's.

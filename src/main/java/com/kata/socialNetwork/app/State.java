@@ -17,6 +17,11 @@ public class State {
         this.people= new HashMap<>();
     }
 
+    public State(Map<String,List<Person>> network, Map<String,Person> people){
+        this.network=network;
+        this.people=people;
+    }
+
     public Map<String, List<Person>> getNetwork() {
         return network;
     }
