@@ -40,4 +40,4 @@ When "view" command is executed after a "follow", the network graph is traversed
 
 The result is a single message list which contains the user's posts, and the posts of those he/she has followed- in time-order, with elapsed time stated in minutes/seconds/hours.
 
-It's important to note that the user's set of messages are not updated within the state; merging does not modify the user's own timeline, it just aggregates the posts of all followees, in linear time.
+It's important to note that the user's set of messages are not updated within the state; merging does not modify the user's own timeline internally, it just aggregates the posts of all followees using a merge algorithm, in time linear to the total number of messages of user+followees.
