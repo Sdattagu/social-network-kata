@@ -28,10 +28,4 @@ public class State {
             this.people.put(name, new Person(name));
         }
     }
-
-    // The set of outbound edges from person node.
-    public List<Person> getWhoAmIFollowing(String name){
-        if(this.network.containsKey(name)) return this.network.get(name);
-        else return new ArrayList<>();
-    }
 }
